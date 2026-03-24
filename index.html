@@ -39,53 +39,56 @@
     </form>
 
     <script>
-      const form = document.getElementById("form-inspecao");
-      const mensagem = document.getElementById("mensagem");
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("form-inspecao");
+        const mensagem = document.getElementById("mensagem");
 
-      form.addEventListener("submit", function (event) {
-        event.preventDefault();
+        form.addEventListener("submit", function (event) {
+          console.log("submit disparado");
+          event.preventDefault();
 
-        const nome = document.getElementById("nome").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const setor = document.getElementById("setor").value;
-        const descricao = document.getElementById("descricao").value.trim();
-        const termos = document.getElementById("termos").checked;
-        const prioridade = document.querySelector(
-          'input [name= "prioridade"]:checked'
-        );
+          const nome = document.getElementById("nome").value.trim();
+          const email = document.getElementById("email").value.trim();
+          const setor = document.getElementById("setor").value;
+          const descricao = document.getElementById("descricao").value.trim();
+          const termos = document.getElementById("termos").checked;
+          const prioridade = document.querySelector(
+            'input[name="prioridade"]:checked'
+          );
 
-        if (nome === "") {
-          mensagem.textContent = "Prencha o nome.";
-          return;
-        }
+          if (nome === "") {
+            mensagem.textContent = "Prencha o nome.";
+            return;
+          }
 
-        if (email === "") {
-          mensagem.textContent = "Preencha o e-mail.";
-          return;
-        }
+          if (email === "") {
+            mensagem.textContent = "Preencha o e-mail.";
+            return;
+          }
 
-        if (setor === "") {
-          mensagem.textContent = "Selecione um setor";
-          return;
-        }
+          if (setor === "") {
+            mensagem.textContent = "Selecione um setor";
+            return;
+          }
 
-        if (!prioridade) {
-          mensagem.textContent = "Selecione uma prioridade.";
-          return;
-        }
+          if (!prioridade) {
+            mensagem.textContent = "Selecione uma prioridade.";
+            return;
+          }
 
-        if (descricao.length < 10) {
-          mensagem.textContent =
-            "A descrição deve ter pelo menos 10 caracteres.";
-          return;
-        }
+          if (descricao.length < 10) {
+            mensagem.textContent =
+              "A descrição deve ter pelo menos 10 caracteres.";
+            return;
+          }
 
-        if (!termos) {
-          mensagem.textContent = "Marque a confirmação dos dados.";
-          return;
-        }
+          if (!termos) {
+            mensagem.textContent = "Marque a confirmação dos dados.";
+            return;
+          }
 
-        mensagem.textContent = "Formulário validado com sucesso.";
+          mensagem.textContent = "Formulário validado com sucesso.";
+        });
       });
     </script>
   </body>
